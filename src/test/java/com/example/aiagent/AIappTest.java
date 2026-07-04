@@ -6,22 +6,26 @@ import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.UUID;
 
 
 @SpringBootTest
+@ActiveProfiles("local")
 class YuManusTest {
 
     @Resource
     private YuManus yuManus;
 
+    @Resource
+    private AIapp aiapp;
     @Test
     void run() {
+        String chatId = UUID.randomUUID().toString();
         String userPrompt = """  
-                我的另一半居住在上海静安区，请帮我搜索静安区 5 公里内合适的约会地点，  
-                并结合一些网络图片，制定一份详细的约会计划""";
-        String answer = yuManus.run(userPrompt);
+                糖尿病患者失眠时，睡前可以喝什么助眠？""";
+        String answer = aiapp.doChatWithCorrectedRag(userPrompt,chatId);
         Assertions.assertNotNull(answer);
     }
 }
