@@ -35,7 +35,7 @@ public class AiAppRagCustomAdvisorFactory {
                         .chatClientBuilder(chatClientBuilder.build().mutate())
                         .build())
                 .documentRetriever(VectorStoreDocumentRetriever.builder()
-                        .similarityThreshold(0.75)
+                        .similarityThreshold(0.6)
                         .vectorStore(vectorStore)
                         .build())
                 .build();

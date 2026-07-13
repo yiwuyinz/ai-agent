@@ -84,7 +84,7 @@ public class AIapp {
                 .user(rewrittenMessage)
                 .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .advisors(new MyLoggerAdvisor())
-                .advisors(QuestionAnswerAdvisor.builder(aiAppVectorStore).build())
+//                .advisors(QuestionAnswerAdvisor.builder(aiAppVectorStore).build())
                 .advisors(
                         AiAppRagCustomAdvisorFactory.createRetrievalAugmentationAdvisor(
                                 aiAppVectorStore, chatClientBuilder
